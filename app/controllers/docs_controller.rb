@@ -10,12 +10,13 @@ class DocsController < ApplicationController
 	end
 
 	def new
-		@doc = Doc.new
+		@doc = current_user.docs.build
+
 	end
 
 	# Does not have a view for itself
 	def create
-		@doc = Doc.new(doc_params)
+		@doc = current_user.docs.build(doc_params)
 
 		if @doc.save
 			redirect_to @doc #redirect refreshes page, input lost
