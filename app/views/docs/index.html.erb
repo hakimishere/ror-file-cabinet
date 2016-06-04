@@ -3,3 +3,5 @@
 <p><%= time_ago_in_words(doc.created_at) %></p>
 <p><%= truncate(doc.content, length: 50) %></p>
 <% end %>
+
+<button><%= link_to "Creat Document", new_doc_path %></button>

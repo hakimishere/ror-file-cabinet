@@ -24,14 +24,23 @@ class DocsController < ApplicationController
 		end
 	end
 
+	# Only responsible for view file.
 	def edit
 	end
 
 	# Does not have a view itself. Makes changes to databse through edit view.
+	# Fetches doc with the before action and then change the params and updates the doc.
 	def update
+		if @doc.update(doc_params)
+			redirect_to @doc
+		else
+			render 'edit' # Again renders retains filled fields
+		end
 	end
 
 	def destroy
+		@doc.destroy
+		redirect_to docs_path
 	end
 
 	private
